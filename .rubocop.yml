@@ -83,6 +83,7 @@ Style/StringLiterals:
     - 'config/spring.rb'
     - 'test/application_system_test_case.rb'
     - 'test/channels/application_cable/connection_test.rb'
+    - 'db/schema.rb'
 
 Style/SymbolArray:
   Exclude:
@@ -91,3 +92,11 @@ Style/SymbolArray:
 Layout/LineLength:
   Exclude:
     - 'bin/bundle'
+
+Style/NumericLiterals:
+  Exclude:
+    - 'db/schema.rb'
+
+Layout/EmptyLinesAroundBlockBody:
+  Exclude:
+    - 'db/schema.rb'
