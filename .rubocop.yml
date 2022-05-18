@@ -33,12 +33,7 @@ Style/ClassAndModuleChildren:
     - 'test/test_helper.rb'
 
 Style/Documentation:
-  Exclude:
-    - 'spec/**/*'
-    - 'test/**/*'
-    - 'app/helpers/application_helper.rb'
-    - 'app/models/application_record.rb'
-    - 'config/application.rb'
+  Enabled: false
 
 Style/ExpandPathArguments:
   Exclude:
