@@ -42,7 +42,19 @@ Style/ExpandPathArguments:
     - 'bin/rake'
 
 Style/FrozenStringLiteralComment:
-  Enabled: false
+  Exclude:
+    - 'config/**/*'
+    - 'bin/**/*'
+    - 'Rakefile'
+    - 'app/channels/**/*'
+    - 'app/jobs/**/*'
+    - 'app/mailers/**/*'
+    - 'app/models/application_record.rb'
+    - 'config.ru'
+    - 'db/schema.rb'
+    - 'db/seeds.rb'
+    - 'test/channels/**/*'
+    - 'test/test_helper.rb'
 
 Style/GlobalStdStream:
   Exclude:
@@ -92,7 +104,7 @@ Style/SymbolArray:
 Layout/LineLength:
   Exclude:
     - 'bin/bundle'
-    - 'config/initializers/devise.*'
+    - 'config/**/*'
 
 Style/NumericLiterals:
   Exclude:
