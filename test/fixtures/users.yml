@@ -1,9 +1,8 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+diego:
   name: MyString
   age: 1
+  email: user@example.com
+  encrypted_password: <%= User.new.send(:password_digest, 'example') %>
 
-two:
-  name: MyString
-  age: 1
