@@ -92,6 +92,7 @@ Style/SymbolArray:
 Layout/LineLength:
   Exclude:
     - 'bin/bundle'
+    - 'config/initializers/devise.*'
 
 Style/NumericLiterals:
   Exclude:
@@ -100,3 +101,7 @@ Style/NumericLiterals:
 Layout/EmptyLinesAroundBlockBody:
   Exclude:
     - 'db/schema.rb'
+
+Layout/EmptyLines:
+  Exclude:
+    - 'db/migrate/**'
