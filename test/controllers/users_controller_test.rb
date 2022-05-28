@@ -14,11 +14,4 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :success
   end
-
-  test 'should delete a user' do
-    delete user_path(users(:diego))
-
-    assert_equal flash[:notice], 'User deleted!'
-    assert_redirected_to users_path
-  end
 end

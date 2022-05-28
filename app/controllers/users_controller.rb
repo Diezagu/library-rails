@@ -8,15 +8,6 @@ class UsersController < ApplicationController
 
   def show; end
 
-  def destroy
-    if @user.destroy
-      flash[:notice] = 'User deleted!'
-    else
-      flash[:alert] = 'Error while deleting user!'
-    end
-    redirect_to users_path
-  end
-
   private
 
   def find_user
