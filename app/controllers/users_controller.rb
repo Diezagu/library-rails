@@ -3,7 +3,7 @@
 class UsersController < ApplicationController
   before_action :find_user, only: %i[show destroy]
   def index
-    @users = User.all
+    @users = User.where.not(id: current_user)
   end
 
   def show; end

@@ -1,0 +1,8 @@
+<h1>Authors</h1>
+<hr>
+<% @users.each do |user| %>
+  <p>Name: <%= user.name %></p>
+  <p>Age: <%= user.age %></p>
+  <%= link_to 'Show', user_path(user) %>
+  <hr>
+<% end %>
