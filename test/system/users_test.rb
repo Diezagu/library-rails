@@ -15,11 +15,4 @@ class UsersTest < ApplicationSystemTestCase
 
     assert_content users(:diego).name
   end
-
-  test 'deleting a user' do
-    visit users_path
-    click_link 'Destroy'
-
-    assert_content 'User deleted!'
-  end
 end
