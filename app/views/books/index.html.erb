@@ -1,0 +1,11 @@
+
+<h1>Books of <%= current_user.name  %></h1>
+<hr>
+<% @books.each do |book| %>
+  <div>
+    <p>Title: <%= book.title %></p>
+    <p>Pages: <%= book.pages %></p>
+    <p>Author: <%= book.author.name %></p>
+  </div>
+  <hr>
+<% end %>

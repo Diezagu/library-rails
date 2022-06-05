@@ -1,3 +1,27 @@
+<h1><%= @user.name %></h1>
 <p>Name: <%= @user.name %></p>
 <p>Age: <%= @user.age %></p>
+<hr>
+<% if current_user == @user %>
+  <h2>Your books</h2>
+<% else %>
+  <h2>Books of <%= @user.name  %></h2>
+<% end%>
+<% if @user.books.any? %>
+  <% @user.books.each do |book| %>
+    <div>
+      <p>Title: <%= book.title %></p>
+      <p>Pages: <%= book.pages %></p>
+      <p>Author: <%= book.author.name %></p>
+    </div>
+    <% if current_user == @user %>
+      <%= link_to 'Edit',  edit_book_path(book) %>
+      <%= link_to 'Delete',  book_path(book), method: :delete, :data => {:confirm => 'Are you sure?'} %>
+    <% end %>
+    <%= link_to 'Show', book_path(book) %>
+    <hr>
+  <% end %>
+<% else %>
+  <p>Nothing to show</p>
+<% end %>
 <%= link_to 'Back', users_path %>

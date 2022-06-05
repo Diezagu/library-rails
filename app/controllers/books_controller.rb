@@ -13,7 +13,7 @@ class BooksController < ApplicationController
     @book = Book.new(permitted_params)
     if @book.save
       flash[:notice] = 'Book created!'
-      redirect_to books_path
+      redirect_to user_path(current_user)
     else
       flash[:alert] = 'Error while creating a book'
       render :new
@@ -28,7 +28,7 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
     if @book.update(permitted_params)
       flash[:notice] = 'Book updated!'
-      redirect_to book_path(@book)
+      redirect_to user_path(current_user)
     else
       flash[:alert] = 'Error while updating the book'
       render :edit
@@ -46,12 +46,14 @@ class BooksController < ApplicationController
     else
       flash[:alert] = 'Error while deleting book'
     end
-    redirect_to books_path
+    redirect_to user_path(current_user)
   end
 
   private
 
   def permitted_params
-    params.require(:book).permit(:title, :pages, :author_id)
+    params.require(:book)
+          .permit(:title, :pages, :author_id)
+          .with_defaults(author_id: current_user.id)
   end
 end
