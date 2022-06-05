@@ -1,2 +1,3 @@
 <h1> <%= @book.title %> </h1>
 <p> Pages: <%= @book.pages %> </p>
+<%= link_to 'Back', user_path(@book.author) %>
