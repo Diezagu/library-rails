@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, path: 'auth'
   resources :users, only: %i[index show destroy]
   resources :books
 
