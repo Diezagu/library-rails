@@ -3,6 +3,11 @@
 require 'test_helper'
 
 class BooksControllerTest < ActionDispatch::IntegrationTest
+  setup do
+    @user = users(:diego)
+    sign_in @user
+  end
+
   test 'must have index' do
     get books_path
 
@@ -34,7 +39,7 @@ class BooksControllerTest < ActionDispatch::IntegrationTest
     put book_path(book, params: { book: { title: 'New', pages: 200, author_id: user.id } })
 
     assert_equal 'Book updated!', flash[:notice]
-    assert_redirected_to book_path(book)
+    assert_redirected_to user_path(user)
   end
 
   test 'Should show a book' do
@@ -47,6 +52,6 @@ class BooksControllerTest < ActionDispatch::IntegrationTest
     delete book_path(books(:first))
 
     assert_equal 'Book deleted!', flash[:notice]
-    assert_redirected_to books_path
+    assert_redirected_to user_path(users(:diego))
   end
 end

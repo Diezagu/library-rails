@@ -3,16 +3,19 @@
 require 'application_system_test_case'
 
 class UsersTest < ApplicationSystemTestCase
-  test 'visiting index' do
+  setup do
+    @user = users(:diego)
+    sign_in @user
     visit users_path
+  end
 
+  test 'visiting index' do
     assert_content 'Authors'
   end
 
   test 'visiting the show of user' do
-    visit users_path
     click_link 'Show'
 
-    assert_content users(:diego).name
+    assert_content users(:urbi).name
   end
 end
