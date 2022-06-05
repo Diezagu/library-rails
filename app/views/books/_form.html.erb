@@ -1,0 +1,14 @@
+<%= form_with  model: @book, local: true do |f| %>
+  <div>
+    <%= f.label :title, 'Title' %>:<br>
+    <%= f.text_field :title %>
+  </div>
+  <br>
+  <div>
+    <%= f.label :pages, 'Pages' %>:<br>
+    <%= f.number_field :pages %>
+  </div>
+  <br>
+  <%= f.submit %>
+  <%= link_to 'Back', users_path %>
+<% end %>
