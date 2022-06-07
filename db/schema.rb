@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 2022_05_31_183748) do
 
   create_table "books", force: :cascade do |t|
     t.string "title", null: false
-    t.integer "pages", null: false
+    t.integer "number_of_pages", null: false
     t.bigint "author_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -38,4 +38,5 @@ ActiveRecord::Schema.define(version: 2022_05_31_183748) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "books", "users", column: "author_id"
 end

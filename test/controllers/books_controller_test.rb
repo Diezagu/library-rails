@@ -14,20 +14,19 @@ class BooksControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'Should have new' do
+  test 'Should visit the new book path' do
     get new_book_path
 
     assert_response :success
   end
 
   test 'should create a book' do
-    user = users(:diego)
-    post books_path(params: { book: { title: 'DSA', pages: 224, author_id: user.id } })
+    post books_path(params: { book: { title: 'DSA', number_of_pages: 224 } })
 
     assert_equal 'Book created!', flash[:notice]
   end
 
-  test 'Should have edit' do
+  test 'Should visit the edit path' do
     get edit_book_path(books(:first))
 
     assert_response :success
@@ -36,7 +35,7 @@ class BooksControllerTest < ActionDispatch::IntegrationTest
   test 'Should update a book' do
     book = books(:first)
     user = users(:diego)
-    put book_path(book, params: { book: { title: 'New', pages: 200, author_id: user.id } })
+    put book_path(book, params: { book: { title: 'New', number_of_pages: 200, author_id: user.id } })
 
     assert_equal 'Book updated!', flash[:notice]
     assert_redirected_to user_path(user)
