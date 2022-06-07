@@ -11,7 +11,7 @@
   <% @user.books.each do |book| %>
     <div>
       <p>Title: <%= book.title %></p>
-      <p>Pages: <%= book.pages %></p>
+      <p>Pages: <%= book.number_of_pages %></p>
       <p>Author: <%= book.author.name %></p>
     </div>
     <% if current_user == @user %>
