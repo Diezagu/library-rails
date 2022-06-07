@@ -9,11 +9,11 @@ class UsersTest < ApplicationSystemTestCase
     visit users_path
   end
 
-  test 'visiting index' do
+  test 'Should visit the users index page and show them' do
     assert_content 'Authors'
   end
 
-  test 'visiting the show of user' do
+  test 'Should visit the page of a user and show its information' do
     click_link 'Show'
 
     assert_content users(:urbi).name

@@ -11,11 +11,12 @@ class BooksController < ApplicationController
 
   def create
     @book = Book.new(permitted_params)
+    @book.author_id = current_user.id
     if @book.save
       flash[:notice] = 'Book created!'
       redirect_to user_path(current_user)
     else
-      flash[:alert] = 'Error while creating a book'
+      flash.now[:alert] = 'Error while creating a book'
       render :new
     end
   end
@@ -30,7 +31,7 @@ class BooksController < ApplicationController
       flash[:notice] = 'Book updated!'
       redirect_to user_path(current_user)
     else
-      flash[:alert] = 'Error while updating the book'
+      flash.now[:alert] = 'Error while updating the book'
       render :edit
     end
   end
@@ -52,8 +53,6 @@ class BooksController < ApplicationController
   private
 
   def permitted_params
-    params.require(:book)
-          .permit(:title, :pages, :author_id)
-          .with_defaults(author_id: current_user.id)
+    params.require(:book).permit(:title, :number_of_pages, :author_id)
   end
 end
