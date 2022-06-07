@@ -8,7 +8,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     sign_in @user
   end
 
-  test 'must have index' do
+  test 'should visit the index of user' do
     get users_path
 
     assert_response :success
