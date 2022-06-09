@@ -6,6 +6,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   validates :name, :age, presence: true
+  validates :avatar, content_type: ['image/png', 'image/jpg', 'image/jpeg']
   validates :age, numericality: { greater_than: 0, less_than: 100 }
 
   has_many :books, foreign_key: 'author_id'
