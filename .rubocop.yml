@@ -14,7 +14,7 @@ Layout/MultilineOperationIndentation:
 Layout/SpaceInsideArrayLiteralBrackets:
   Exclude:
     - 'config/environments/production.rb'
-    - 'db/migrate/20220609000326_create_active_storage_tables.active_storage.rb'
+    - 'db/migrate/**/*'
 
 Metrics/CyclomaticComplexity:
   Exclude:
@@ -23,7 +23,7 @@ Metrics/CyclomaticComplexity:
 Metrics/MethodLength:
   Exclude:
     - 'bin/bundle'
-    - 'db/migrate/20220609000326_create_active_storage_tables.active_storage.rb'
+    - 'db/migrate/**/*'
 
 Metrics/PerceivedComplexity:
   Exclude:
@@ -57,7 +57,7 @@ Style/FrozenStringLiteralComment:
     - 'db/seeds.rb'
     - 'test/channels/**/*'
     - 'test/test_helper.rb'
-    - 'db/migrate/20220609000326_create_active_storage_tables.active_storage.rb'
+    - 'db/migrate/**/*'
 
 Style/GlobalStdStream:
   Exclude:
@@ -99,19 +99,19 @@ Style/StringLiterals:
     - 'test/application_system_test_case.rb'
     - 'test/channels/application_cable/connection_test.rb'
     - 'db/schema.rb'
-    - 'db/migrate/20220609000326_create_active_storage_tables.active_storage.rb'
+    - 'db/migrate/**/*'
 
 Style/SymbolArray:
   Exclude:
     - 'Gemfile'
-    - 'db/migrate/20220609000326_create_active_storage_tables.active_storage.rb'
+    - 'db/migrate/**/*'
 
 Layout/LineLength:
   Exclude:
     - 'bin/bundle'
     - 'config/**/*'
     - 'db/schema.rb'
-    - 'db/migrate/20220609000326_create_active_storage_tables.active_storage.rb'
+    - 'db/migrate/**/*'
 
 Style/NumericLiterals:
   Exclude:
