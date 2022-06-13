@@ -3,12 +3,17 @@
     <%= f.label :title, 'Title' %>:<br>
     <%= f.text_field :title %>
   </div>
-  <br>
+
+  <div class="field">
+    <%= f.label :cover, 'Cover' %><br />
+    <%= f.file_field :cover, accept: 'image/*' %>
+  </div>
+
   <div>
     <%= f.label :number_of_pages, 'Pages' %>:<br>
     <%= f.number_field :number_of_pages %>
   </div>
-  <br>
+
   <%= f.submit %>
   <%= link_to 'Back', users_path %>
 <% end %>
