@@ -1,0 +1,6 @@
+class Comment < ApplicationRecord
+  belongs_to :author, class_name: 'User'
+  belongs_to :commentable, polymorphic: true
+
+  validates :text, :author, presence: true
+end
