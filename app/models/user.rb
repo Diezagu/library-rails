@@ -10,5 +10,6 @@ class User < ApplicationRecord
   validates :age, numericality: { greater_than: 0, less_than: 100 }
 
   has_many :books, foreign_key: 'author_id'
+  has_many :comments, as: :commentable
   has_one_attached :avatar
 end
