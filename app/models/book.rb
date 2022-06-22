@@ -7,4 +7,5 @@ class Book < ApplicationRecord
 
   delegate :name, to: :author, prefix: 'author'
   has_one_attached :cover
+  has_many :comments, as: :commentable
 end
