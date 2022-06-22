@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class CommentTest < ActiveSupport::TestCase
@@ -16,7 +18,6 @@ class CommentTest < ActiveSupport::TestCase
   end
 
   test 'it is valid with author and text' do
-    debugger
     comment = Comment.new(author: users(:diego), text: 'Nice book', commentable: books(:first))
 
     assert comment.valid?
