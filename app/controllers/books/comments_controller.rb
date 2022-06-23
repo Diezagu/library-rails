@@ -3,6 +3,7 @@
 module Books
   class CommentsController < ApplicationController
     before_action :setup_book
+
     def create
       @comment = @book.comments.new(permitted_params)
       if @comment.save
