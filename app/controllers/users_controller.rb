@@ -6,7 +6,9 @@ class UsersController < ApplicationController
     @users = User.where.not(id: current_user)
   end
 
-  def show; end
+  def show
+    @comment = Comment.new
+  end
 
   private
 

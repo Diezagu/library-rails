@@ -4,6 +4,20 @@
 <% end %>
 <p>Name: <%= @user.name %></p>
 <p>Age: <%= @user.age %></p>
+<h2>Comments</h2>
+<% if @user.comments.any? %>
+  <ul>
+    <% @user.comments.each do |comment| %>
+      <li> <%= comment.text %> </li>
+        <% if comment.author == current_user %>
+          <%= link_to 'Delete', user_comment_path(@user, comment), method: :delete, data: { confirm: 'Are u sure?' } %>
+        <% end %>
+    <% end %>
+  </ul>
+<% else %>
+  <p> No comments posted yet </p>
+<% end %>
+<%= render 'comments/form', path: user_comments_path(@user), placeholder: 'Write a comment...' %>
 <hr>
 <% if current_user == @user %>
   <h2>Your books</h2>
