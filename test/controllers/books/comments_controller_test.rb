@@ -19,7 +19,7 @@ module Books
 
     test 'Should destroy a comment of a book' do
       book = books(:first)
-      comment = book.comments.create(author: comments(:book_diego).author , text: comments(:book_diego).text)
+      comment = book.comments.create(author: comments(:book_diego).author, text: comments(:book_diego).text)
 
       delete book_comment_path(book, comment)
 

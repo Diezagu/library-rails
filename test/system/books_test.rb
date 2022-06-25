@@ -35,7 +35,6 @@ class BooksTest < ApplicationSystemTestCase
   test 'Showing a book' do
     click_on 'Profile'
     click_on 'Show'
-
     assert_content books(:first).title
   end
 

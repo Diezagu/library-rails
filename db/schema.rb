@@ -84,6 +84,6 @@ ActiveRecord::Schema.define(version: 2022_06_16_060358) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "books", "users", column: "author_id"
-  add_foreign_key "comments", "books", column: "id"
+  add_foreign_key "comments", "books"
   add_foreign_key "comments", "users", column: "author_id"
 end
