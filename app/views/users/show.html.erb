@@ -8,10 +8,11 @@
 <% if @user.comments.any? %>
   <ul>
     <% @user.comments.each do |comment| %>
-      <li> <%= comment.text %> </li>
+      <li> <%= comment.text %>
         <% if comment.author == current_user %>
           <%= link_to 'Delete', user_comment_path(@user, comment), method: :delete, data: { confirm: 'Are u sure?' } %>
         <% end %>
+      </li>
     <% end %>
   </ul>
 <% else %>

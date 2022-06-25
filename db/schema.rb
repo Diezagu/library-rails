@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 2022_06_16_060358) do
     t.bigint "book_id"
     t.string "commentable_type"
     t.bigint "commentable_id"
-    t.text "text"
+    t.text "text", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["author_id"], name: "index_comments_on_author_id"
@@ -84,4 +84,6 @@ ActiveRecord::Schema.define(version: 2022_06_16_060358) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "books", "users", column: "author_id"
+  add_foreign_key "comments", "books", column: "id"
+  add_foreign_key "comments", "users", column: "author_id"
 end

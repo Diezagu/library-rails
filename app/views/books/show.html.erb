@@ -7,10 +7,11 @@
 <% if @book.comments.any? %>
   <ul>
     <% @book.comments.each do |comment| %>
-      <li> <%= comment.text %> </li>
+      <li> <%= comment.text %>
         <% if comment.author == current_user %>
           <%= link_to 'Delete', book_comment_path(@book, comment), method: :delete, data: { confirm: 'Are u sure?' } %>
         <% end %>
+      </li>
     <% end %>
   </ul>
 <% else %>

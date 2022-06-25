@@ -16,7 +16,6 @@ module Books
 
     def destroy
       @comment = @book.comments.find_by!(id: params[:id], author: current_user)
-
       if @comment.destroy
         flash[:notice] = 'Comment deleted!'
       else
@@ -28,7 +27,9 @@ module Books
     private
 
     def permitted_params
-      params.require(:comment).permit(:text).merge(author_id: current_user.id)
+      params.require(:comment)
+            .permit(:text)
+            .merge(author_id: current_user.id)
     end
 
     def setup_book
