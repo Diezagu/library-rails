@@ -3,6 +3,8 @@
   <%= image_tag @book.cover.representation(resize_to_limit: [100, 100]) %>
 <% end %>
 <p> Pages: <%= @book.number_of_pages %> </p>
+<h2>Synopsis</h2>
+<p> <%= @book.synopsis %> </p>
 <h2>Comments</h2>
 <% if @book.comments.any? %>
   <ul>
