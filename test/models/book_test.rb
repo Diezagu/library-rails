@@ -24,8 +24,8 @@ class BookTest < ActiveSupport::TestCase
     assert_equal 'must exist', book.errors.messages[:author].first
   end
 
-  test 'it is valid with author, number of pages and title' do
-    book = Book.new(title: 'SSD', number_of_pages: 224, author: users(:diego))
+  test 'it is valid with author, number of pages, title and synopsis' do
+    book = Book.new(title: 'SSD', number_of_pages: 224, author: users(:diego), synopsis: 'Great book to programmers!')
 
     assert book.valid?
   end

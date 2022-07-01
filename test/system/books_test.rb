@@ -17,6 +17,7 @@ class BooksTest < ApplicationSystemTestCase
     click_on 'Create a book'
     fill_in 'Title', with: 'NEW BOOK'
     fill_in 'Pages', with: 222
+    find('trix-editor').set('Hello <em>world!</em>')
     click_on 'Create Book'
 
     assert_content 'Book created!'
@@ -27,6 +28,8 @@ class BooksTest < ApplicationSystemTestCase
     click_on 'Edit'
     fill_in 'Title', with: 'NEW BOOK'
     fill_in 'Pages', with: 222
+    find('trix-editor').set('Hello <em>world!</em>')
+    take_screenshot
     click_on 'Update Book'
 
     assert_content 'Book updated!'
