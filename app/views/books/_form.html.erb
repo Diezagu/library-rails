@@ -14,6 +14,11 @@
     <%= f.number_field :number_of_pages %>
   </div>
 
+  <div>
+    <%= f.label :synopsis, 'Synopsis' %>:<br>
+    <%= f.rich_text_area :synopsis %>
+  </div>
+
   <%= f.submit %>
   <%= link_to 'Back', users_path %>
 <% end %>
