@@ -24,8 +24,20 @@ class BookTest < ActiveSupport::TestCase
     assert_equal 'must exist', book.errors.messages[:author].first
   end
 
+  test 'it is not valid without synopsis' do
+    book = Book.new(title: 'SSD',
+                    number_of_pages: 224,
+                    author: users(:diego))
+
+    refute book.valid?
+    assert_equal "can't be blank", book.errors.messages[:synopsis].first
+  end
+
   test 'it is valid with author, number of pages, title and synopsis' do
-    book = Book.new(title: 'SSD', number_of_pages: 224, author: users(:diego), synopsis: 'Great book to programmers!')
+    book = Book.new(title: 'SSD',
+                    number_of_pages: 224,
+                    author: users(:diego),
+                    synopsis: 'Great book to programmers!')
 
     assert book.valid?
   end
