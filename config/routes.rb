@@ -6,7 +6,9 @@ Rails.application.routes.draw do
 
   resources :books do
     resources :comments, module: 'books'
+    resources :likes, only: %i[create destroy], module: 'books'
   end
+
 
   root to: 'users#index'
 end
