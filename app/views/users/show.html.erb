@@ -37,6 +37,11 @@
       <%= link_to 'Delete',  book_path(book), method: :delete, :data => {:confirm => 'Are you sure?'} %>
     <% end %>
     <%= link_to 'Show', book_path(book) %>
+    <% if book.likes.find_by(author_id: current_user.id) %>
+      <%= link_to 'Unlike', like_path(book.likes.find_by(author_id: current_user.id)), method: :delete %>
+    <% else %>
+      <%= link_to 'Like', likes_path(like: { author_id: current_user.id, book_id: book.id }), method: :post %>
+    <% end %>
     <hr>
   <% end %>
 <% else %>
