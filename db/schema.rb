@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(version: 2022_07_04_004435) do
   create_table "likes", force: :cascade do |t|
     t.bigint "author_id"
 <<<<<<< HEAD
+<<<<<<< HEAD
     t.bigint "book_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -81,6 +82,13 @@ ActiveRecord::Schema.define(version: 2022_07_04_004435) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["author_id"], name: "index_likes_on_author_id"
 >>>>>>> 6e98d92... Create like model
+=======
+    t.bigint "book_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["author_id"], name: "index_likes_on_author_id"
+    t.index ["book_id"], name: "index_likes_on_book_id"
+>>>>>>> b1a132f... Create likes controller
   end
 
   create_table "users", force: :cascade do |t|
