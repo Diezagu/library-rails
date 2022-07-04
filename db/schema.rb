@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(version: 2022_07_04_004435) do
     t.bigint "book_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["author_id", "book_id"], name: "index_likes_on_author_id_and_book_id", unique: true
     t.index ["author_id"], name: "index_likes_on_author_id"
     t.index ["book_id"], name: "index_likes_on_book_id"
   end
@@ -95,4 +96,6 @@ ActiveRecord::Schema.define(version: 2022_07_04_004435) do
   add_foreign_key "books", "users", column: "author_id"
   add_foreign_key "comments", "books"
   add_foreign_key "comments", "users", column: "author_id"
+  add_foreign_key "likes", "books"
+  add_foreign_key "likes", "users", column: "author_id"
 end
