@@ -3,12 +3,9 @@ Rails.application.routes.draw do
   resources :users, only: %i[index show destroy] do
     resources :comments, module: 'users'
   end
-
   resources :books do
     resources :comments, module: 'books'
-    resources :likes, only: %i[create destroy], module: 'books'
   end
-
-
+  resources :likes, only: %i[create destroy]
   root to: 'users#index'
 end
