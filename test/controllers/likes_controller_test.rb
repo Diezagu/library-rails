@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class LikesControllerTest < ActionDispatch::IntegrationTest
@@ -9,7 +11,7 @@ class LikesControllerTest < ActionDispatch::IntegrationTest
     book = books(:first)
     post likes_path(params: { like: { author_id: users(:diego).id, book_id: book.id } })
 
-    assert_redirected_to user_path(users(:diego))
+    assert_redirected_to "/"
   end
 
   test 'Unliking a book' do
@@ -18,7 +20,6 @@ class LikesControllerTest < ActionDispatch::IntegrationTest
 
     delete like_path(like)
 
-    assert_redirected_to user_path(users(:diego))
+    assert_redirected_to "/"
   end
 end
-
