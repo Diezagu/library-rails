@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_04_004435) do
+ActiveRecord::Schema.define(version: 2022_07_05_230650) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +68,28 @@ ActiveRecord::Schema.define(version: 2022_07_04_004435) do
     t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id"
   end
 
+<<<<<<< HEAD
+=======
+  create_table "followers", force: :cascade do |t|
+    t.bigint "author_id"
+    t.bigint "follower_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["author_id"], name: "index_followers_on_author_id"
+    t.index ["follower_id"], name: "index_followers_on_follower_id"
+  end
+
+  create_table "follows", force: :cascade do |t|
+    t.bigint "follower_id"
+    t.bigint "followee_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["followee_id", "follower_id"], name: "index_follows_on_followee_id_and_follower_id", unique: true
+    t.index ["followee_id"], name: "index_follows_on_followee_id"
+    t.index ["follower_id"], name: "index_follows_on_follower_id"
+  end
+
+>>>>>>> Create follow model
   create_table "likes", force: :cascade do |t|
     t.bigint "author_id"
     t.bigint "book_id"
@@ -96,6 +118,13 @@ ActiveRecord::Schema.define(version: 2022_07_04_004435) do
   add_foreign_key "books", "users", column: "author_id"
   add_foreign_key "comments", "books"
   add_foreign_key "comments", "users", column: "author_id"
+<<<<<<< HEAD
+=======
+  add_foreign_key "followers", "users", column: "author_id"
+  add_foreign_key "followers", "users", column: "follower_id"
+  add_foreign_key "follows", "users", column: "followee_id"
+  add_foreign_key "follows", "users", column: "follower_id"
+>>>>>>> Create follow model
   add_foreign_key "likes", "books"
   add_foreign_key "likes", "users", column: "author_id"
 end
