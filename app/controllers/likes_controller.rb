@@ -4,13 +4,13 @@ class LikesController < ApplicationController
   def create
     @like = Like.new(permitted_params)
     flash[:alert] = 'Error while liking book!' unless @like.save
-    redirect_back(fallback_location:"/")
+    redirect_back(fallback_location: '/')
   end
 
   def destroy
     @like = Like.find(params[:id])
     flash.now[:alert] = 'Error while unliking book!' unless @like.destroy
-    redirect_back(fallback_location:"/")
+    redirect_back(fallback_location: '/')
   end
 
   private
