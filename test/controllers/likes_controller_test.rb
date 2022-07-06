@@ -7,14 +7,15 @@ class LikesControllerTest < ActionDispatch::IntegrationTest
     sign_in(users(:diego))
   end
 
-  test 'liking a book' do
+  test 'should save the like for the book' do
     book = books(:first)
+
     post likes_path(params: { like: { author: users(:diego), book_id: book.id } })
 
     assert_redirected_to '/'
   end
 
-  test 'unliking a book' do
+  test 'should delete the like of a book' do
     book = books(:first)
     like = book.likes.create(author: users(:diego))
 

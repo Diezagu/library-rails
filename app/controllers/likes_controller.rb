@@ -3,7 +3,6 @@
 class LikesController < ApplicationController
   def create
     @like = Like.new(permitted_params)
-    @like.author = current_user
     flash[:alert] = 'Error while liking book!' unless @like.save
     redirect_back(fallback_location: '/')
   end
@@ -17,6 +16,8 @@ class LikesController < ApplicationController
   private
 
   def permitted_params
-    params.require(:like).permit(:book_id)
+    params.require(:like)
+          .permit(:book_id)
+          .merge(author: current_user)
   end
 end
