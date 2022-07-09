@@ -10,7 +10,7 @@ class LikesControllerTest < ActionDispatch::IntegrationTest
   test 'should save the like for the book' do
     book = books(:first)
 
-    post likes_path(params: { like: { author: users(:diego), book_id: book.id } })
+    post likes_path(params: { like: { author: users(:diego), book: book } })
 
     assert_redirected_to '/'
   end
