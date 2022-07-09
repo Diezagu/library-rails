@@ -38,9 +38,9 @@
     <% end %>
     <%= link_to 'Show', book_path(book) %>
     <% if current_user.liked_book?(book) %>
-      <%= link_to 'Unlike', like_path(book.likes.find_by(author_id: current_user.id)), method: :delete %>
+      <%= link_to 'Unlike', like_path(book.likes.find_by(author: current_user)), method: :delete %>
     <% else %>
-      <%= link_to 'Like', likes_path(like: { book_id: book.id }), method: :post %>
+      <%= link_to 'Like', likes_path(like: { book: book }), method: :post %>
     <% end %>
     <hr>
   <% end %>
