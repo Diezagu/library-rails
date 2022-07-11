@@ -68,8 +68,6 @@ ActiveRecord::Schema.define(version: 2022_07_05_230650) do
     t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id"
   end
 
-<<<<<<< HEAD
-=======
   create_table "followers", force: :cascade do |t|
     t.bigint "author_id"
     t.bigint "follower_id"
@@ -89,7 +87,6 @@ ActiveRecord::Schema.define(version: 2022_07_05_230650) do
     t.index ["follower_id"], name: "index_follows_on_follower_id"
   end
 
->>>>>>> Create follow model
   create_table "likes", force: :cascade do |t|
     t.bigint "author_id"
     t.bigint "book_id"
@@ -118,13 +115,8 @@ ActiveRecord::Schema.define(version: 2022_07_05_230650) do
   add_foreign_key "books", "users", column: "author_id"
   add_foreign_key "comments", "books"
   add_foreign_key "comments", "users", column: "author_id"
-<<<<<<< HEAD
-=======
-  add_foreign_key "followers", "users", column: "author_id"
-  add_foreign_key "followers", "users", column: "follower_id"
   add_foreign_key "follows", "users", column: "followee_id"
   add_foreign_key "follows", "users", column: "follower_id"
->>>>>>> Create follow model
   add_foreign_key "likes", "books"
   add_foreign_key "likes", "users", column: "author_id"
 end
