@@ -11,6 +11,7 @@ class User < ApplicationRecord
 
   has_many :books, foreign_key: 'author_id'
   has_many :comments, as: :commentable
+  has_many :followers, class_name: 'Follow', foreign_key: 'follower_id'
   has_one_attached :avatar
 
   def liked_book?(book)
