@@ -3,6 +3,9 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  def followed_by?(user)
+    followers.exists?(follower_id: user.id)
+  end
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   validates :name, :age, presence: true
@@ -11,7 +14,7 @@ class User < ApplicationRecord
 
   has_many :books, foreign_key: 'author_id'
   has_many :comments, as: :commentable
-  has_many :followers, class_name: 'Follow', foreign_key: 'follower_id'
+  has_many :followers, class_name: 'Follow', foreign_key: 'followee_id', dependent: :delete_all
   has_one_attached :avatar
 
   def liked_book?(book)
