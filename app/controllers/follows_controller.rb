@@ -18,6 +18,6 @@ class FollowsController < ApplicationController
   def permitted_params
     params.require(:follow)
           .permit(:followee_id)
-          .merge(followee: current_user)
+          .merge(follower_id: current_user.id)
   end
 end
