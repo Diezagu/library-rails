@@ -4,13 +4,13 @@ class FollowsController < ApplicationController
   def create
     @follow = Follow.new(permitted_params)
     flash.now[:alert] = 'Error while following author!' unless @follow.save
-    redirect_back(fallback_location: '/')
+    redirect_back(fallback_location: root_path)
   end
 
   def destroy
     @follow = Follow.find(params[:id])
     flash.now[:alert] = 'Error while unfollowing author!' unless @follow.destroy
-    redirect_back(fallback_location: '/')
+    redirect_back(fallback_location: root_path)
   end
 
   private
