@@ -47,11 +47,7 @@
     <% if current_user.liked_book?(book) %>
       <%= link_to 'Unlike', like_path(book.likes.find_by(author: current_user)), method: :delete %>
     <% else %>
-<<<<<<< HEAD
-      <%= link_to 'Like', likes_path(like: { book: book }), method: :post %>
-=======
       <%= link_to 'Like', likes_path(like: { book_id: book.id }), method: :post %>
->>>>>>> Add .id to _id sentences
     <% end %>
     <hr>
   <% end %>

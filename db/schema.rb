@@ -78,6 +78,16 @@ ActiveRecord::Schema.define(version: 2022_07_05_230650) do
     t.index ["follower_id"], name: "index_follows_on_follower_id"
   end
 
+  create_table "likes", force: :cascade do |t|
+    t.bigint "author_id"
+    t.bigint "book_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["author_id", "book_id"], name: "index_likes_on_author_id_and_book_id", unique: true
+    t.index ["author_id"], name: "index_likes_on_author_id"
+    t.index ["book_id"], name: "index_likes_on_book_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
     t.integer "age", null: false
@@ -98,4 +108,6 @@ ActiveRecord::Schema.define(version: 2022_07_05_230650) do
   add_foreign_key "comments", "users", column: "author_id"
   add_foreign_key "follows", "users", column: "followee_id"
   add_foreign_key "follows", "users", column: "follower_id"
+  add_foreign_key "likes", "books"
+  add_foreign_key "likes", "users", column: "author_id"
 end
