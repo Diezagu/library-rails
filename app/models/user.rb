@@ -15,6 +15,7 @@ class User < ApplicationRecord
 
   def liked_book?(book)
     book.likes.exists?(author: self)
+  end
 
   def followed_by?(user)
     followers.exists?(follower_id: user.id)
