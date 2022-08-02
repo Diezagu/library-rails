@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_05_230650) do
+ActiveRecord::Schema.define(version: 2022_08_02_204812) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -88,6 +88,15 @@ ActiveRecord::Schema.define(version: 2022_07_05_230650) do
     t.index ["book_id"], name: "index_likes_on_book_id"
   end
 
+  create_table "notifications", force: :cascade do |t|
+    t.string "title"
+    t.text "text"
+    t.bigint "author_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["author_id"], name: "index_notifications_on_author_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
     t.integer "age", null: false
@@ -110,4 +119,5 @@ ActiveRecord::Schema.define(version: 2022_07_05_230650) do
   add_foreign_key "follows", "users", column: "follower_id"
   add_foreign_key "likes", "books"
   add_foreign_key "likes", "users", column: "author_id"
+  add_foreign_key "notifications", "users", column: "author_id"
 end
