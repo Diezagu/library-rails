@@ -9,6 +9,7 @@ class NotificationsController < ApplicationController
   def destroy
     notification = Notification.find(params[:id])
     flash[:alert] = 'Error while destroying notification' unless notification.destroy
+    redirect_to users_path
   end
 
   private

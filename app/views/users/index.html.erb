@@ -2,6 +2,22 @@
 <%= link_to 'Log out', destroy_user_session_path, method: :delete %>
 <%= link_to 'Create a book', new_book_path %>
 <%= link_to 'Profile', user_path(current_user) %>
+<h2>Notifications</h2>
+<% if current_user.notifications.any? %>
+  <ul>
+    <% current_user.notifications.each do |notification| %>
+      <li>
+        <p>
+          <%= notification.title %><br>
+          <%= notification.text %>
+          <%= link_to 'Delete', notification_path(notification), method: :delete, data: { confirm: 'Are u sure?' } %>
+        </p>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>Nothing to show</p>
+<% end %>
 <hr>
 <% @users.each do |user| %>
   <p>Name: <%= user.name %></p>
