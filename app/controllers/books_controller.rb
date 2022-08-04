@@ -10,8 +10,8 @@ class BooksController < ApplicationController
   end
 
   def create
+    create_notification
     @book = Book.new(permitted_params)
-    @book.author_id = current_user.id
     if @book.save
       flash[:notice] = 'Book created!'
       redirect_to user_path(current_user)
@@ -53,8 +53,18 @@ class BooksController < ApplicationController
 
   private
 
+  def create_notification
+    current_user.followers.each do |follower|
+      notification = Notification.new(title: 'New book created',
+                                      text: "#{current_user.name} has published a new book",
+                                      author_id: follower.follower_id)
+      notification.save
+    end
+  end
+
   def permitted_params
     params.require(:book)
           .permit(:title, :number_of_pages, :author_id, :cover, :synopsis)
+          .merge(author: current_user)
   end
 end

@@ -26,6 +26,6 @@ class NotificationsControllerTest < ActionDispatch::IntegrationTest
   test 'should delete a notification using the DELETE method of notification' do
     delete notification_path(notifications(:book))
 
-    assert_response :success
+    assert_redirected_to users_path
   end
 end
