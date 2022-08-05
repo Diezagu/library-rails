@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Hi! <%= @user.name %> </h1>
+    <p>
+      <%= @current_user.name %> has uploaded a new book!.<br>
+    </p>
+    <h2>Book details</h2>
+    <p>
+      Title: <%= @book.title %><br>
+      Pages: <%= @book.number_of_pages %><br>
+      Synopsis: <%= @book.synopsis %>
+    </p>
+    <p>If you want more information <%= link_to 'click here!', book_url(@book) %> </p>
+  </body>
+</html>
