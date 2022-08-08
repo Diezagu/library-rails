@@ -18,7 +18,6 @@ class BooksController < ApplicationController
       flash.now[:alert] = 'Error while creating a book'
       render :new
     end
-    create_notifications(@book)
   end
 
   def edit
@@ -52,17 +51,6 @@ class BooksController < ApplicationController
   end
 
   private
-
-  def create_notifications(book)
-    current_user.followers.each do |follower|
-      user = User.find_by(id: follower.follower_id)
-      UserMailer.with(user: user, current_user: current_user, book: book).notification_email.deliver_now
-      notification = Notification.new(title: 'New book created',
-                                      text: "#{current_user.name} has published a new book",
-                                      author_id: follower.follower_id)
-      notification.save
-    end
-  end
 
   def permitted_params
     params.require(:book)
