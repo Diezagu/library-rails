@@ -3,10 +3,9 @@ class CreateNotifications < ActiveRecord::Migration[6.0]
     create_table :notifications do |t|
       t.string :title
       t.text :text
-      t.belongs_to :author
+      t.belongs_to :author, foreign_key: { to_table: :user }
 
       t.timestamps
     end
-    add_foreign_key :notifications, :users, column: :author_id
   end
 end
