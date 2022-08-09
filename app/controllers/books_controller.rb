@@ -10,7 +10,7 @@ class BooksController < ApplicationController
   end
 
   def create
-    @book = Book.new(permitted_params)
+    @book = current_user.books.new(permitted_params)
     if @book.save
       flash[:notice] = 'Book created!'
       redirect_to user_path(current_user)
@@ -25,7 +25,7 @@ class BooksController < ApplicationController
   end
 
   def update
-    @book = Book.find(params[:id])
+    @book = Book.find_by(id: params[:id], author: current_user)
     if @book.update(permitted_params)
       flash[:notice] = 'Book updated!'
       redirect_to user_path(current_user)
@@ -55,6 +55,5 @@ class BooksController < ApplicationController
   def permitted_params
     params.require(:book)
           .permit(:title, :number_of_pages, :author_id, :cover, :synopsis)
-          .merge(author: current_user)
   end
 end

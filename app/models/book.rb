@@ -10,11 +10,11 @@ class Book < ApplicationRecord
   has_rich_text :synopsis
   has_many :comments, as: :commentable
   has_many :likes, dependent: :delete_all
-  after_create :create_notifications
+  after_commit :create_notifications, on: :create
 
   private
 
-  def create_notifications
+  def notify_followers
     author.followers.each do |follower|
       user = User.find_by(id: follower.follower_id)
       UserMailer.with(user: user, current_user: author, book: self).notification_email.deliver_now
