@@ -14,7 +14,7 @@ class BooksControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'Should visit the new book path' do
+  test 'should visit the new book path' do
     get new_book_path
 
     assert_response :success
@@ -28,13 +28,13 @@ class BooksControllerTest < ActionDispatch::IntegrationTest
     assert_equal 'Book created!', flash[:notice]
   end
 
-  test 'Should visit the edit path' do
+  test 'should visit the edit path' do
     get edit_book_path(books(:first))
 
     assert_response :success
   end
 
-  test 'Should update a book' do
+  test 'should update a book' do
     book = books(:first)
     user = users(:diego)
     put book_path(book, params: { book: { title: 'New',
@@ -46,13 +46,13 @@ class BooksControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to user_path(user)
   end
 
-  test 'Should show a book' do
+  test 'should show a book' do
     get book_path(books(:first))
 
     assert_response :success
   end
 
-  test 'Should delete a book' do
+  test 'should delete a book' do
     delete book_path(books(:first))
 
     assert_equal 'Book deleted!', flash[:notice]

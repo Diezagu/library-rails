@@ -10,7 +10,7 @@ class Book < ApplicationRecord
   has_rich_text :synopsis
   has_many :comments, as: :commentable
   has_many :likes, dependent: :delete_all
-  after_commit :create_notifications, on: :create
+  after_commit :notify_followers, on: :create
 
   private
 
