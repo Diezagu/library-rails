@@ -105,9 +105,10 @@ jobs:
     runs-on: ubuntu-latest
     services:
       redis:
-          # Docker Hub image
           image: redis
-          # Set health checks to wait until redis has started
+          env:
+            REDIS_HOST: redis
+            REDIS_PORT: 6379
           options: >-
             --health-cmd "redis-cli ping"
             --health-interval 10s
@@ -157,12 +158,7 @@ jobs:
         # Runs a script that creates a Redis client, populates
         # the client with data, and retrieves data
         run: node client.js
-        # Environment variable used by the `client.js` script to create a new Redis client.
-        env:
-          # El nombre del host utilizado para comunicarse con el contenedor de servicio Redis
-          REDIS_HOST: redis
-          # El puerto Redis predeterminado
-          REDIS_PORT: 6379
+        # Environment variable used by the `client.js` script to create a new Redis client
 
       - name: Setup test database
         env:
