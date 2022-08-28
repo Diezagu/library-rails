@@ -104,13 +104,6 @@ jobs:
     name: System tests
     runs-on: ubuntu-latest
     services:
-      redis:
-        image: redis
-        options: >-
-          --health-cmd "redis-cli ping"
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
       postgres:
         image: postgres:14
         env:
@@ -136,6 +129,11 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 14.19.0
+
+      - name: Start Redis
+        uses: supercharge/redis-github-action@1.4.0
+        with:
+          redis-version: 5
 
       - name: Find yarn cache location
         id: yarn-cache
@@ -166,6 +164,4 @@ jobs:
           PGHOST: localhost
           PGUSER: postgres
           PGPASSWORD: postgres
-          REDIS_HOST: redis
-          REDIS_PORT: 6379
         run: bundle exec rails test:system
