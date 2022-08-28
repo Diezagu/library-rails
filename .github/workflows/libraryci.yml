@@ -104,6 +104,15 @@ jobs:
     name: System tests
     runs-on: ubuntu-latest
     services:
+      redis:
+          # Docker Hub image
+          image: redis
+          # Set health checks to wait until redis has started
+          options: >-
+            --health-cmd "redis-cli ping"
+            --health-interval 10s
+            --health-timeout 5s
+            --health-retries 5
       postgres:
         image: postgres:14
         env:
@@ -143,6 +152,17 @@ jobs:
             ${{ runner.os }}-yarn-
       - name: Install packages
         run: yarn install
+
+        - name: Connect to Redis
+        # Runs a script that creates a Redis client, populates
+        # the client with data, and retrieves data
+        run: node client.js
+        # Environment variable used by the `client.js` script to create a new Redis client.
+        env:
+          # El nombre del host utilizado para comunicarse con el contenedor de servicio Redis
+          REDIS_HOST: redis
+          # El puerto Redis predeterminado
+          REDIS_PORT: 6379
 
       - name: Setup test database
         env:
