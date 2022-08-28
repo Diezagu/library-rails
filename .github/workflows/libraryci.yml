@@ -151,9 +151,6 @@ jobs:
       - name: Install packages
         run: yarn install
 
-      - name: Connect to Redis
-        run: node client.js
-
       - name: Setup test database
         env:
           PGHOST: localhost
