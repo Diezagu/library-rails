@@ -15,6 +15,6 @@ class Book < ApplicationRecord
   private
 
   def notify_followers
-    SendBookCreatedNotificationToUsersJob.perform_later(author, self)
+    SendBookCreatedNotificationToUsersJob.perform_later(author.id, id)
   end
 end
