@@ -1,5 +1,6 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
-  require 'sidekiq/web'
   mount Sidekiq::Web => '/sidekiq'
   devise_for :users, path: 'auth'
   resources :users, only: %i[index show destroy] do
