@@ -6,6 +6,11 @@ Rails.application.routes.draw do
   resources :users, only: %i[index show destroy] do
     resources :comments, module: 'users'
   end
+  namespace :api do
+    namespace :v1 do
+      resources :books, only: %i[index]
+    end
+  end
   resources :books do
     resources :comments, module: 'books'
   end

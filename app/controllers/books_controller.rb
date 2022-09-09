@@ -1,14 +1,8 @@
 # frozen_string_literal: true
 
 class BooksController < ApplicationController
-  skip_before_action :authenticate_user!, if: :skip_authenticate_user
-
   def index
     @books = Book.all
-    respond_to do |format|
-      format.html
-      format.json { authenticate_user(params[:email], params[:password]) }
-    end
   end
 
   def new
@@ -57,19 +51,6 @@ class BooksController < ApplicationController
   end
 
   private
-
-  def skip_authenticate_user
-    action_name == 'index' && request.format.json?
-  end
-
-  def authenticate_user(email, password)
-    user = User.where(email: email).first
-    if user&.valid_password?(password)
-      render json: @books
-    else
-      head(:unauthorized)
-    end
-  end
 
   def permitted_params
     params.require(:book)
