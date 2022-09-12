@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class BooksController < ApplicationController
+class BooksController < AuthenticationController
   def index
     @books = Book.all
   end
