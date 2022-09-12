@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class FollowsController < ApplicationController
+class FollowsController < AuthenticationController
   def create
     @follow = Follow.new(permitted_params)
     flash.now[:alert] = 'Error while following author!' unless @follow.save

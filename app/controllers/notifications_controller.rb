@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class NotificationsController < ApplicationController
+class NotificationsController < AuthenticationController
   def destroy
     notification = Notification.find(params[:id])
     flash[:alert] = 'Error while destroying notification' unless notification.destroy

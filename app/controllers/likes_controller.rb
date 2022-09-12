@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class LikesController < ApplicationController
+class LikesController < AuthenticationController
   def create
     @like = Like.new(permitted_params)
     flash[:alert] = 'Error while liking book!' unless @like.save
