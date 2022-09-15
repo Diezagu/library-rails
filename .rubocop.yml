@@ -132,3 +132,6 @@ Style/WordArray:
 Metrics/BlockLength:
   Exclude:
     - 'db/schema.rb'
+
+Style/ClassAndModuleChildren:
+  Enabled: false
