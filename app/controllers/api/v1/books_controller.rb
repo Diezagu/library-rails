@@ -1,12 +1,8 @@
 # frozen_string_literal: true
 
-module Api
-  module V1
-    class BooksController < ApplicationController
-      def index
-        @books = Book.all
-        render json: @books
-      end
-    end
+class Api::V1::BooksController < Api::ApiController
+  def index
+    @books = Book.all
+    render json: @books
   end
 end
