@@ -12,8 +12,9 @@ class Api::V1::BooksControllerTest < ActionDispatch::IntegrationTest
       created_at: books(:first).created_at.iso8601(3),
       updated_at: books(:first).updated_at.iso8601(3)
     }
+    header = {'Authorization' => "Token #{Rails.application.credentials.dig(:auth, :token).to_s}"}
 
-    get api_v1_author_books_path(users(:diego))
+    get api_v1_author_books_path(users(:diego)), headers: header
 
     assert_response :success
     assert_equal [book.as_json], JSON.parse(response.body)
