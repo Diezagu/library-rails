@@ -43,7 +43,6 @@ jobs:
       postgres:
         image: postgres:14
         env:
-          RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
           POSTGRES_DB: postgres
@@ -96,6 +95,7 @@ jobs:
 
       - name: Run tests
         env:
+          RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
           PGHOST: localhost
           PGUSER: postgres
           PGPASSWORD: postgres
